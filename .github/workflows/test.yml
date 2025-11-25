@@ -12,6 +12,9 @@ on:
       - README.*
       - examples
       - .github/workflows
+env:
+  nim-src: src/tiptap.nim
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,5 +29,5 @@ jobs:
           nim-version: ${{ matrix.nim-version }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - run: nimble install -Y
-      - run: nim c -r src/${{ github.event.repository.name }}.nim
+      - run: nim c -r src/${{ env.nim-src }}.nim
       - run: nimble test
