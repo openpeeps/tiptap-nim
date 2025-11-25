@@ -1,0 +1,3 @@
+nimTitle	tiptap	tiptap.html	module tiptap		0
+nim	TipTap	tiptap.html#TipTap	object TipTap		14
+nim	initTipTap	tiptap.html#initTipTap,sinkstring	proc initTipTap(content: sink string): TipTap		17

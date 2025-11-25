@@ -1,0 +1,4 @@
+nimTitle	validator	tiptap/validator.html	module tiptap/validator		0
+nim	TipTapSchema	tiptap/validator.html#TipTapSchema	object TipTapSchema		14
+nim	defaultTipTapSchema	tiptap/validator.html#defaultTipTapSchema	const defaultTipTapSchema		25
+nim	validate	tiptap/validator.html#validate,TipTapContent,TipTapSchema	proc validate(content: TipTapContent; schema: TipTapSchema = defaultTipTapSchema): bool		27
