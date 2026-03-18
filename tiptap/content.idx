@@ -16,9 +16,9 @@ nim	ttCode	tiptap/content.html#ttCode	TipTapNodeType.ttCode		12
 nim	ttBlockquote	tiptap/content.html#ttBlockquote	TipTapNodeType.ttBlockquote		12
 nim	ttHighlight	tiptap/content.html#ttHighlight	TipTapNodeType.ttHighlight		12
 nim	TipTapNodeType	tiptap/content.html#TipTapNodeType	enum TipTapNodeType		12
-nim	TipTapNode	tiptap/content.html#TipTapNode	type TipTapNode		30
-nim	TipTapContent	tiptap/content.html#TipTapContent	object TipTapContent		45
-nim	newTipTapNode	tiptap/content.html#newTipTapNode,TipTapNodeType	proc newTipTapNode(typ: TipTapNodeType): TipTapNode		51
-nim	addChild	tiptap/content.html#addChild,TipTapNode,TipTapNode	proc addChild(parent: var TipTapNode; child: TipTapNode)		55
-nim	getFirstParagraph	tiptap/content.html#getFirstParagraph,TipTapContent	proc getFirstParagraph(content: TipTapContent): Option[TipTapNode]		59
-nim	`$`	tiptap/content.html#$,TipTapContent	proc `$`(tt: TipTapContent): string		66
+nim	TipTapNode	tiptap/content.html#TipTapNode	type TipTapNode		33
+nim	TipTapContent	tiptap/content.html#TipTapContent	object TipTapContent		48
+nim	newTipTapNode	tiptap/content.html#newTipTapNode,TipTapNodeType	proc newTipTapNode(typ: TipTapNodeType): TipTapNode		55
+nim	addChild	tiptap/content.html#addChild,TipTapNode,TipTapNode	proc addChild(parent: var TipTapNode; child: TipTapNode)		59
+nim	getFirstParagraph	tiptap/content.html#getFirstParagraph,TipTapContent	proc getFirstParagraph(content: TipTapContent): Option[TipTapNode]		63
+nim	`$`	tiptap/content.html#$,TipTapContent	proc `$`(tt: TipTapContent): string		70
