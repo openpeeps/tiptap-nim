@@ -1,7 +1,7 @@
 # TipTap - Schema Definition and Validator
 # for TipTap Editor in Nim language
 #
-# (c) 2025 George Lemon | LGPL License
+# (c) 2025 George Lemon | MIT License
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/tiptap-nim
 

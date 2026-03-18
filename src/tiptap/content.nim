@@ -1,7 +1,7 @@
 # TipTap - Schema Definition and Validator
 # for TipTap Editor in Nim language
 #
-# (c) 2025 George Lemon | LGPL License
+# (c) 2025 George Lemon | MIT License
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/tiptap-nim
 
@@ -23,19 +23,24 @@ type
     ttTaskList = "taskList",
     ttImage = "image"
     ttCodeBlock = "codeBlock",
+    ttCode = "code",
     ttBlockquote = "blockquote",
+    ttHighlight = "highlight"
 
   TipTapNode* {.acyclic.} = ref object
-    attrs*: Table[string, string]
-      ## Attributes of the node, such as "bold", "italic", etc.
+    ## Represents a node in the TipTap document structure.
+    ## This can be a text node, paragraph, heading, etc.
     case `type`*: TipTapNodeType ## The type of the node, e.g., "paragraph", "text", etc.
     of ttText:
-      text*: string ## The actual text content for text nodes
+      text*: string
+        ## The actual text content for text nodes
+      marks*: seq[TipTapNode]
+        ## Marks applied to the node, such as "bold", "italic", etc.
     else:
       content*: seq[TipTapNode]
         ## The content of the node, which can be a sequence of `TipTapNode`
-      marks*: seq[TipTapNode]
-        ## Marks applied to the node, such as "bold", "italic", etc.
+    attrs*: Table[string, string]
+      ## Attributes of the node, such as "bold", "italic", etc.
 
   TipTapContent* = object
     `type`*: string
