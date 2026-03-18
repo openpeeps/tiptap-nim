@@ -12,6 +12,8 @@ import ./content
 
 type
   TipTapSchema* = object
+    ## Defines the schema for validating TipTap content. It includes a whitelist
+    ## of allowed node types and optional layout rules for node ordering.
     whitelist*: set[TipTapNodeType] = {ttParagraph..ttHighlight}
       ## A set of allowed node types in the TipTap content
     layoutRules*: seq[TipTapNodeType]
@@ -26,9 +28,9 @@ const defaultTipTapSchema* = TipTapSchema()
 
 proc validate*(content: TipTapContent,
       schema: TipTapSchema = defaultTipTapSchema): bool =
-  ## Validates the TipTap content structure
-  ## using the provided JSON schema. If no schema is provided,
-  ## it uses the default schema.
+  ## Validates the TipTap content structure using the provided JSON schema.
+  ## 
+  ## If no schema is provided, it uses the default schema.
   if schema.layoutRules.len > 0:
     for i, node in content.content:
       if not schema.whitelist.contains(node.`type`):

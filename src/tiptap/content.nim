@@ -10,6 +10,9 @@ import pkg/jsony
 
 type
   TipTapNodeType* = enum
+    ## Enumeration of allowed node types in the TipTap editor. This includes basic
+    ## text formatting nodes, structural nodes like paragraphs and headings, and
+    ## media nodes like images. Custom node types can also be added as needed
     ttCustom
     ttParagraph = "paragraph",
     ttText = "text",
@@ -43,6 +46,7 @@ type
       ## Attributes of the node, such as "bold", "italic", etc.
 
   TipTapContent* = object
+    ## Represents the entire TipTap document structure
     `type`*: string
       ## The type of the document, typically "doc"
     content*: seq[TipTapNode]
