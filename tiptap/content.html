@@ -16,10 +16,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../nimdoc.out.css?v=2.2.6">
+<link rel="stylesheet" type="text/css" href="../nimdoc.out.css?v=2.2.8">
 
 <!-- JS -->
-<script type="text/javascript" src="../dochack.js?v=2.2.6"></script>
+<script type="text/javascript" src="../dochack.js?v=2.2.8"></script>
 </head>
 <body>
   <div class="document" id="documentId">
@@ -58,19 +58,20 @@
       <li><a class="reference" href="#TipTapContent" title="TipTapContent = object
   content*: seq[TipTapNode]  ## The content of the document, which is a sequence of `TipTapNode`">TipTapContent</a></li>
 <li><a class="reference" href="#TipTapNode" title="TipTapNode {.acyclic.} = ref object
-  attrs*: Table[string, string] ## Attributes of the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.
   case                      ## The type of the node, e.g., &quot;paragraph&quot;, &quot;text&quot;, etc.
   of ttText:
     text*: string            ## The actual text content for text nodes
+    marks*: seq[TipTapNode]  ## Marks applied to the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.
   else:
     content*: seq[TipTapNode] ## The content of the node, which can be a sequence of `TipTapNode`
-    marks*: seq[TipTapNode]  ## Marks applied to the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.">TipTapNode</a></li>
+  attrs*: Table[string, string] ## Attributes of the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.">TipTapNode</a></li>
 <li><a class="reference" href="#TipTapNodeType" title="TipTapNodeType = enum
   ttCustom, ttParagraph = &quot;paragraph&quot;, ttText = &quot;text&quot;, ttHeading = &quot;heading&quot;,
   ttBold = &quot;bold&quot;, ttItalic = &quot;italic&quot;, ttLink = &quot;link&quot;,
   ttBulletList = &quot;bulletList&quot;, ttOrderedList = &quot;orderedList&quot;,
   ttListItem = &quot;listItem&quot;, ttTaskList = &quot;taskList&quot;, ttImage = &quot;image&quot;,
-  ttCodeBlock = &quot;codeBlock&quot;, ttBlockquote = &quot;blockquote&quot;">TipTapNodeType</a></li>
+  ttCodeBlock = &quot;codeBlock&quot;, ttCode = &quot;code&quot;, ttBlockquote = &quot;blockquote&quot;,
+  ttHighlight = &quot;highlight&quot;">TipTapNodeType</a></li>
 
     </ul>
   </details>
@@ -122,16 +123,16 @@
 </div>
 <div id="TipTapNode">
   <dt><pre><a href="content.html#TipTapNode"><span class="Identifier">TipTapNode</span></a> {.<span class="Identifier">acyclic</span>.} <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
-  <span class="Identifier">attrs</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">]</span> <span class="Comment">## Attributes of the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.</span>
   <span class="Keyword">case</span>                      <span class="Comment">## The type of the node, e.g., &quot;paragraph&quot;, &quot;text&quot;, etc.</span>
   <span class="Keyword">of</span> <span class="Identifier">ttText</span><span class="Other">:</span>
     <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>            <span class="Comment">## The actual text content for text nodes</span>
+    <span class="Identifier">marks</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="content.html#TipTapNode"><span class="Identifier">TipTapNode</span></a><span class="Other">]</span>  <span class="Comment">## Marks applied to the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.</span>
   <span class="Keyword">else</span><span class="Other">:</span>
     <span class="Identifier">content</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="content.html#TipTapNode"><span class="Identifier">TipTapNode</span></a><span class="Other">]</span> <span class="Comment">## The content of the node, which can be a sequence of `TipTapNode`</span>
-    <span class="Identifier">marks</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="content.html#TipTapNode"><span class="Identifier">TipTapNode</span></a><span class="Other">]</span>  <span class="Comment">## Marks applied to the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.</span></pre></dt>
+  <span class="Identifier">attrs</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">Table</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">]</span> <span class="Comment">## Attributes of the node, such as &quot;bold&quot;, &quot;italic&quot;, etc.</span></pre></dt>
   <dd>
     
-    
+    Represents a node in the TipTap document structure. This can be a text node, paragraph, heading, etc.
     
   </dd>
 </div>
@@ -141,7 +142,8 @@
   <span class="Identifier">ttBold</span> <span class="Other">=</span> <span class="StringLit">&quot;bold&quot;</span><span class="Other">,</span> <span class="Identifier">ttItalic</span> <span class="Other">=</span> <span class="StringLit">&quot;italic&quot;</span><span class="Other">,</span> <span class="Identifier">ttLink</span> <span class="Other">=</span> <span class="StringLit">&quot;link&quot;</span><span class="Other">,</span>
   <span class="Identifier">ttBulletList</span> <span class="Other">=</span> <span class="StringLit">&quot;bulletList&quot;</span><span class="Other">,</span> <span class="Identifier">ttOrderedList</span> <span class="Other">=</span> <span class="StringLit">&quot;orderedList&quot;</span><span class="Other">,</span>
   <span class="Identifier">ttListItem</span> <span class="Other">=</span> <span class="StringLit">&quot;listItem&quot;</span><span class="Other">,</span> <span class="Identifier">ttTaskList</span> <span class="Other">=</span> <span class="StringLit">&quot;taskList&quot;</span><span class="Other">,</span> <span class="Identifier">ttImage</span> <span class="Other">=</span> <span class="StringLit">&quot;image&quot;</span><span class="Other">,</span>
-  <span class="Identifier">ttCodeBlock</span> <span class="Other">=</span> <span class="StringLit">&quot;codeBlock&quot;</span><span class="Other">,</span> <span class="Identifier">ttBlockquote</span> <span class="Other">=</span> <span class="StringLit">&quot;blockquote&quot;</span></pre></dt>
+  <span class="Identifier">ttCodeBlock</span> <span class="Other">=</span> <span class="StringLit">&quot;codeBlock&quot;</span><span class="Other">,</span> <span class="Identifier">ttCode</span> <span class="Other">=</span> <span class="StringLit">&quot;code&quot;</span><span class="Other">,</span> <span class="Identifier">ttBlockquote</span> <span class="Other">=</span> <span class="StringLit">&quot;blockquote&quot;</span><span class="Other">,</span>
+  <span class="Identifier">ttHighlight</span> <span class="Other">=</span> <span class="StringLit">&quot;highlight&quot;</span></pre></dt>
   <dd>
     
     
@@ -212,7 +214,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2025-11-25 15:44:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-03-18 19:22:18 UTC</small>
       </div>
     </div>
   </div>

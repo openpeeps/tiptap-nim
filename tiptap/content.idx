@@ -12,11 +12,13 @@ nim	ttListItem	tiptap/content.html#ttListItem	TipTapNodeType.ttListItem		12
 nim	ttTaskList	tiptap/content.html#ttTaskList	TipTapNodeType.ttTaskList		12
 nim	ttImage	tiptap/content.html#ttImage	TipTapNodeType.ttImage		12
 nim	ttCodeBlock	tiptap/content.html#ttCodeBlock	TipTapNodeType.ttCodeBlock		12
+nim	ttCode	tiptap/content.html#ttCode	TipTapNodeType.ttCode		12
 nim	ttBlockquote	tiptap/content.html#ttBlockquote	TipTapNodeType.ttBlockquote		12
+nim	ttHighlight	tiptap/content.html#ttHighlight	TipTapNodeType.ttHighlight		12
 nim	TipTapNodeType	tiptap/content.html#TipTapNodeType	enum TipTapNodeType		12
-nim	TipTapNode	tiptap/content.html#TipTapNode	type TipTapNode		28
-nim	TipTapContent	tiptap/content.html#TipTapContent	object TipTapContent		40
-nim	newTipTapNode	tiptap/content.html#newTipTapNode,TipTapNodeType	proc newTipTapNode(typ: TipTapNodeType): TipTapNode		46
-nim	addChild	tiptap/content.html#addChild,TipTapNode,TipTapNode	proc addChild(parent: var TipTapNode; child: TipTapNode)		50
-nim	getFirstParagraph	tiptap/content.html#getFirstParagraph,TipTapContent	proc getFirstParagraph(content: TipTapContent): Option[TipTapNode]		54
-nim	`$`	tiptap/content.html#$,TipTapContent	proc `$`(tt: TipTapContent): string		61
+nim	TipTapNode	tiptap/content.html#TipTapNode	type TipTapNode		30
+nim	TipTapContent	tiptap/content.html#TipTapContent	object TipTapContent		45
+nim	newTipTapNode	tiptap/content.html#newTipTapNode,TipTapNodeType	proc newTipTapNode(typ: TipTapNodeType): TipTapNode		51
+nim	addChild	tiptap/content.html#addChild,TipTapNode,TipTapNode	proc addChild(parent: var TipTapNode; child: TipTapNode)		55
+nim	getFirstParagraph	tiptap/content.html#getFirstParagraph,TipTapContent	proc getFirstParagraph(content: TipTapContent): Option[TipTapNode]		59
+nim	`$`	tiptap/content.html#$,TipTapContent	proc `$`(tt: TipTapContent): string		66
