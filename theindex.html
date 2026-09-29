@@ -16,13 +16,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.8">
+<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.12">
 
 <!-- JS -->
-<script type="text/javascript" src="dochack.js?v=2.2.8"></script>
+<script type="text/javascript" src="dochack.js?v=2.2.12"></script>
 </head>
 <body>
   <div class="document" id="documentId">
+    <input type="checkbox" id="nav-toggle" hidden>
+    <label for="nav-toggle" id="nav-burger">&#9776;</label>
+    <label for="nav-toggle" id="nav-overlay"></label>
     <div class="container">
       <h1 class="title">Index</h1>
       Modules: <a href="index.html">tiptap</a>, <a href="tiptap/content.html">tiptap/content</a>, <a href="tiptap/validator.html">tiptap/validator</a>.<br/><p /><h2>API symbols</h2>
@@ -46,9 +49,17 @@
 <li><a class="reference external"
           data-doc-search-tag="tiptap: proc initTipTap(content: sink string): TipTap" href="index.html#initTipTap%2Csinkstring">tiptap: proc initTipTap(content: sink string): TipTap</a></li>
           </ul></dd>
+<dt><a name="jsonValueToString" href="#jsonValueToString"><span>jsonValueToString:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="content: proc jsonValueToString(n: JsonNode): string" href="tiptap/content.html#jsonValueToString%2CJsonNode">content: proc jsonValueToString(n: JsonNode): string</a></li>
+          </ul></dd>
 <dt><a name="newTipTapNode" href="#newTipTapNode"><span>newTipTapNode:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="content: proc newTipTapNode(typ: TipTapNodeType): TipTapNode" href="tiptap/content.html#newTipTapNode%2CTipTapNodeType">content: proc newTipTapNode(typ: TipTapNodeType): TipTapNode</a></li>
+          </ul></dd>
+<dt><a name="parseTipTapContent" href="#parseTipTapContent"><span>parseTipTapContent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="content: proc parseTipTapContent(s: string): TipTapContent" href="tiptap/content.html#parseTipTapContent%2Cstring">content: proc parseTipTapContent(s: string): TipTapContent</a></li>
           </ul></dd>
 <dt><a name="TipTap" href="#TipTap"><span>TipTap:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -69,6 +80,18 @@
 <dt><a name="TipTapSchema" href="#TipTapSchema"><span>TipTapSchema:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="validator: object TipTapSchema" href="tiptap/validator.html#TipTapSchema">validator: object TipTapSchema</a></li>
+          </ul></dd>
+<dt><a name="toTipTapAttrs" href="#toTipTapAttrs"><span>toTipTapAttrs:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="content: proc toTipTapAttrs(n: JsonNode): Table[string, string]" href="tiptap/content.html#toTipTapAttrs%2CJsonNode">content: proc toTipTapAttrs(n: JsonNode): Table[string, string]</a></li>
+          </ul></dd>
+<dt><a name="toTipTapContent" href="#toTipTapContent"><span>toTipTapContent:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="content: proc toTipTapContent(n: JsonNode): TipTapContent" href="tiptap/content.html#toTipTapContent%2CJsonNode">content: proc toTipTapContent(n: JsonNode): TipTapContent</a></li>
+          </ul></dd>
+<dt><a name="toTipTapNode" href="#toTipTapNode"><span>toTipTapNode:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="content: proc toTipTapNode(n: JsonNode): TipTapNode" href="tiptap/content.html#toTipTapNode%2CJsonNode">content: proc toTipTapNode(n: JsonNode): TipTapNode</a></li>
           </ul></dd>
 <dt><a name="ttBlockquote" href="#ttBlockquote"><span>ttBlockquote:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -142,7 +165,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-03-18 19:46:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-09-29 15:01:12 UTC</small>
       </div>
     </div>
   </div>

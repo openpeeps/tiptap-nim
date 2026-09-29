@@ -21,4 +21,9 @@ nim	TipTapContent	tiptap/content.html#TipTapContent	object TipTapContent		48
 nim	newTipTapNode	tiptap/content.html#newTipTapNode,TipTapNodeType	proc newTipTapNode(typ: TipTapNodeType): TipTapNode		55
 nim	addChild	tiptap/content.html#addChild,TipTapNode,TipTapNode	proc addChild(parent: var TipTapNode; child: TipTapNode)		59
 nim	getFirstParagraph	tiptap/content.html#getFirstParagraph,TipTapContent	proc getFirstParagraph(content: TipTapContent): Option[TipTapNode]		63
-nim	`$`	tiptap/content.html#$,TipTapContent	proc `$`(tt: TipTapContent): string		70
+nim	jsonValueToString	tiptap/content.html#jsonValueToString,JsonNode	proc jsonValueToString(n: JsonNode): string		70
+nim	toTipTapAttrs	tiptap/content.html#toTipTapAttrs,JsonNode	proc toTipTapAttrs(n: JsonNode): Table[string, string]		80
+nim	toTipTapNode	tiptap/content.html#toTipTapNode,JsonNode	proc toTipTapNode(n: JsonNode): TipTapNode		89
+nim	toTipTapContent	tiptap/content.html#toTipTapContent,JsonNode	proc toTipTapContent(n: JsonNode): TipTapContent		113
+nim	parseTipTapContent	tiptap/content.html#parseTipTapContent,string	proc parseTipTapContent(s: string): TipTapContent		122
+nim	`$`	tiptap/content.html#$,TipTapContent	proc `$`(tt: TipTapContent): string		132
