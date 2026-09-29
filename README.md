@@ -25,7 +25,6 @@ Check tests in the `tests` folder for usage examples.
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/openpeeps/tiptap-nim/issues)
 - 👋 Wanna help? [Fork it!](https://github.com/openpeeps/tiptap-nim/fork)
-- 😎 [Get €20 in cloud credits from Hetzner](https://hetzner.cloud/?ref=Hm0mYGM9NxZ4)
 
 ### 🎩 License
 MIT license. [Made by Humans from OpenPeeps](https://github.com/openpeeps).<br>
