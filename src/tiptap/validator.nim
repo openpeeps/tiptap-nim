@@ -5,9 +5,6 @@
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/tiptap-nim
 
-import std/[sets, json]
-import pkg/jsony
-
 import ./content
 
 type

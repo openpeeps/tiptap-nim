@@ -5,8 +5,8 @@
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/tiptap-nim
 
-import std/[tables, options]
-import pkg/jsony
+import std/[tables, options, strutils]
+import openparser/json
 
 type
   TipTapNodeType* = enum
@@ -66,8 +66,70 @@ proc getFirstParagraph*(content: TipTapContent): Option[TipTapNode] =
     if node.`type` == ttParagraph:
       return some(node)
   return none(TipTapNode)
-  
+
+proc jsonValueToString*(n: JsonNode): string =
+  ## Converts a JSON value to its string representation for `attrs` storage
+  case n.kind
+  of JString: result = n.getStr
+  of JInt: result = $n.getInt
+  of JFloat: result = $n.getFloat
+  of JBool: result = $n.getBool
+  of JNull: result = ""
+  of JObject, JArray: result = toJson(n)
+
+proc toTipTapAttrs*(n: JsonNode): Table[string, string] =
+  ## Converts a JSON object into an attrs table. Non-string scalars
+  ## are stringified so `{"level": 1}` becomes `{"level": "1"}`
+  result = initTable[string, string]()
+  if n == nil or n.kind != JObject:
+    return
+  for k, v in n.pairs:
+    result[k] = jsonValueToString(v)
+
+proc toTipTapNode*(n: JsonNode): TipTapNode =
+  ## Converts a `JsonNode` into a `TipTapNode`. Raises `ValueError`
+  ## for unknown node types (via `parseEnum`)
+  let t = parseEnum[TipTapNodeType](n["type"].getStr)
+  case t
+  of ttText:
+    result = TipTapNode(`type`: ttText)
+    result.text =
+      if n.hasKey("text"): n["text"].getStr("")
+      else: ""
+    result.marks = @[]
+    if n.hasKey("marks") and n["marks"].kind == JArray:
+      for m in n["marks"].elems:
+        result.marks.add(toTipTapNode(m))
+  else:
+    result = TipTapNode(`type`: t)
+    result.content = @[]
+    if n.hasKey("content") and n["content"].kind == JArray:
+      for c in n["content"].elems:
+        result.content.add(toTipTapNode(c))
+  result.attrs = initTable[string, string]()
+  if n.hasKey("attrs") and n["attrs"].kind == JObject:
+    result.attrs = toTipTapAttrs(n["attrs"])
+
+proc toTipTapContent*(n: JsonNode): TipTapContent =
+  ## Converts a `JsonNode` (parsed with `openparser/json`) into
+  ## a `TipTapContent` document
+  result.`type` = n["type"].getStr
+  result.content = @[]
+  if n.hasKey("content") and n["content"].kind == JArray:
+    for c in n["content"].elems:
+      result.content.add(toTipTapNode(c))
+
+proc parseTipTapContent*(s: string): TipTapContent =
+  ## Parses a TipTap JSON string into a `TipTapContent` document
+  ## using `openparser/json` via a `JsonNode` intermediate.
+  ##
+  ## Note: we parse via `JsonNode` instead of `fromJson(s, TipTapContent)`
+  ## because `openparser`'s compile-time fast path does not handle
+  ## the backticked `type` field on non-variant objects.
+  let n: JsonNode = fromJson(s)
+  toTipTapContent(n)
+
 proc `$`*(tt: TipTapContent): string =
   ## Converts the TipTap document to a JSON string
-  ## representation using `pkg/jsony`
-  jsony.toJson(tt)
+  ## representation using `openparser/json`
+  toJson(tt)

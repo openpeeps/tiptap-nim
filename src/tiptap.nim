@@ -5,8 +5,6 @@
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/tiptap-nim
 
-import pkg/jsony
-
 import ./tiptap/[content, validator]
 export content, validator
 
@@ -15,5 +13,6 @@ type
     content*: TipTapContent
 
 proc initTipTap*(content: sink string): TipTap =
-  ## Initializes a new TipTap document
-  TipTap(content: fromJson(content, TipTapContent))
+  ## Initializes a new TipTap document from a JSON string
+  ## using `openparser/json` (via `parseTipTapContent`)
+  TipTap(content: parseTipTapContent(content))
